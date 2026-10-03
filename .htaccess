@@ -1,0 +1,68 @@
+# ============================================
+# Finansueños — configuración de Apache
+# Cada bloque va dentro de <IfModule>: si el hosting no tiene ese módulo,
+# el bloque se ignora en vez de romper el sitio.
+#
+# IMPORTANTE: si en el hosting ya existe un .htaccess (por ejemplo con la
+# redirección a HTTPS que hoy funciona), hay que combinarlo con este,
+# no reemplazarlo.
+# ============================================
+
+# ---------- Página de error propia ----------
+ErrorDocument 404 /404.html
+
+# ---------- Redirección de www a finansuenos.com ----------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^www\.finansuenos\.com$ [NC]
+  RewriteRule ^ https://finansuenos.com%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# ---------- Tipos de archivo ----------
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+  AddType image/svg+xml .svg
+  AddType application/javascript .js
+  AddType text/css .css
+  AddCharset utf-8 .html .css .js .xml .txt
+</IfModule>
+
+# ---------- Compresión (las páginas pesan ~70% menos al viajar) ----------
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/plain text/xml application/javascript application/xml application/json image/svg+xml
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/xml application/json image/svg+xml
+</IfModule>
+
+# ---------- Caché del navegador ----------
+# Las páginas se revisan siempre (los cambios se ven de inmediato);
+# estilos y scripts 1 semana; imágenes 1 mes.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault                          "access plus 1 week"
+  ExpiresByType text/html                 "access plus 0 seconds"
+  ExpiresByType application/xml           "access plus 0 seconds"
+  ExpiresByType text/xml                  "access plus 0 seconds"
+  ExpiresByType text/css                  "access plus 1 week"
+  ExpiresByType application/javascript    "access plus 1 week"
+  ExpiresByType image/webp                "access plus 1 month"
+  ExpiresByType image/png                 "access plus 1 month"
+  ExpiresByType image/jpeg                "access plus 1 month"
+  ExpiresByType image/svg+xml             "access plus 1 month"
+</IfModule>
+
+# ---------- Cabeceras de seguridad ----------
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+# ---------- Bloquear archivos ocultos (.git, .env, etc.) ----------
+<IfModule mod_authz_core.c>
+  <FilesMatch "^\.">
+    Require all denied
+  </FilesMatch>
+</IfModule>

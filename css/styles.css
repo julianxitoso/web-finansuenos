@@ -617,3 +617,21 @@ textarea.form-control { resize: vertical; min-height: 120px; }
   height: 1px;
   overflow: hidden;
 }
+
+/* ---------- Página 404 ---------- */
+.not-found { text-align: center; padding: 100px 0; }
+.not-found .not-found-code {
+  font-family: var(--font-heading);
+  font-size: 5rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--color-accent);
+}
+.not-found h1 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin: 16px 0 12px;
+}
+.not-found p { color: var(--color-text-muted); }
+.not-found-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; margin-top: 32px; }
