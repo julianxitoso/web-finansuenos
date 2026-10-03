@@ -608,3 +608,12 @@ textarea.form-control { resize: vertical; min-height: 120px; }
   white-space: nowrap;
   border: 0;
 }
+
+/* Campo trampa del formulario: fuera de la vista de las personas */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
