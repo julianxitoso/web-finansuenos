@@ -90,6 +90,16 @@
     .page-header h1 { font-family: var(--font-heading); font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; color: var(--color-text-light); }
     .page-header p { font-size: 1.1rem; color: rgba(255,255,255,0.8); margin-top: 12px; }
 
+    /* En celular el banner ya trae su propio texto: el título va debajo de la imagen */
+    @media (max-width: 768px) {
+      .page-header-content { position: static; padding: 24px; text-align: center; background: var(--color-bg-alt); }
+      .page-header h1 { color: var(--color-primary); }
+      .page-header p { color: var(--color-text-muted); font-size: 1.05rem; margin-top: 6px; }
+      main .page-content { padding: 0; }
+      main #cta-cards { padding: 32px 0; }
+      .cta-card .cta-img { order: -1; }
+    }
+
     /* Content */
     .page-content { padding: var(--section-padding); }
 

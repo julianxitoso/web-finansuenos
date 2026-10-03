@@ -158,6 +158,23 @@
       margin-top: 12px;
     }
 
+    /* En celular el banner ya trae su propio texto: el título va debajo de la imagen */
+    @media (max-width: 768px) {
+      .page-header-content {
+        position: static;
+        transform: none;
+        max-width: none;
+        padding: 24px;
+        text-align: center;
+        background: var(--color-bg-alt);
+      }
+      .page-header p { font-size: 1.05rem; margin-top: 6px; }
+      main .page-content { padding: 0; }
+      main #cta-cards, main #medios-pago { padding: 32px 0; }
+      main #medios-pago .container { padding: 0; }
+      .cta-card .cta-img { order: -1; }
+    }
+
     /* Content */
     .page-content {
       padding: var(--section-padding);
