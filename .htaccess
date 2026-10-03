@@ -16,6 +16,13 @@ ErrorDocument 404 /404.html
   RewriteEngine On
   RewriteCond %{HTTP_HOST} ^www\.finansuenos\.com$ [NC]
   RewriteRule ^ https://finansuenos.com%{REQUEST_URI} [L,R=301]
+
+  # URLs de spam creadas en el hackeo (ago-sept 2026): "410 Eliminado" para que
+  # Google las saque del índice. No afecta a sobre-nosotros.html ni a las demás páginas.
+  RewriteRule ^(public/)?(sobre-nosotros|preguntas-frecuentes|tu-credito-copy|hello-world)(/.*)?$ - [G,L,NC]
+  RewriteRule ^(public/)?hello-world\.zip$ - [G,L,NC]
+  RewriteRule ^amp\.php$ - [G,L,NC]
+  RewriteRule ^google(7abeaa52d7fff6e3|83f1aaa68b0668b7|84e44fa850b7599b|e6f01bdc76e4af05)\.html$ - [G,L,NC]
 </IfModule>
 
 # ---------- Tipos de archivo ----------
@@ -63,6 +70,15 @@ ErrorDocument 404 /404.html
 # ---------- Bloquear archivos ocultos (.git, .env, etc.) ----------
 <IfModule mod_authz_core.c>
   <FilesMatch "^\.">
+    Require all denied
+  </FilesMatch>
+</IfModule>
+
+# ---------- Bloquear PHP y comprimidos ----------
+# El sitio es HTML estático: ningún .php es legítimo aquí. Si alguien vuelve a
+# subir uno (como amp.php en el hackeo de sept. 2026), el servidor no lo ejecuta.
+<IfModule mod_authz_core.c>
+  <FilesMatch "\.(php[0-9]?|phtml|phar|zip|rar|7z|tar|gz|sql|bak)$">
     Require all denied
   </FilesMatch>
 </IfModule>
