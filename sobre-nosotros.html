@@ -3,244 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sobre Nosotros - Finansuenos</title>
-  <meta name="description" content="Conoce más sobre Finansuenos, una empresa dedicada a hacer realidad los sueños de los colombianos.">
+  <title>Sobre Nosotros - Finansueños</title>
+  <meta name="description" content="Conoce Finansueños: una plataforma de inclusión financiera enfocada en la economía popular de Colombia.">
   <link rel="icon" href="public/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="footer.css">
-  
-  <style>
-    :root {
-      --color-primary:     #1A3C6E;
-      --color-secondary:   #F5A623;
-      --color-accent:      #2BBFA4;
-      --color-bg:          #FFFFFF;
-      --color-bg-alt:      #F4F7FB;
-      --color-footer-bg:   #1A3C6E;
-      --color-text:        #222222;
-      --color-text-light:  #FFFFFF;
-      --color-text-muted:   #666666;
-      
-      --font-heading: 'Montserrat', sans-serif;
-      --font-body:    'Open Sans', sans-serif;
-      
-      --max-width: 1200px;
-      --section-padding: 60px 20px;
-      --border-radius: 12px;
-      --shadow: 0 4px 24px rgba(0,0,0,0.10);
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); line-height: 1.6; }
-
-    .container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
-    a { color: inherit; text-decoration: none; }
-
-    /* Header */
-    .site-header { position: sticky; top: 0; z-index: 1000; background: var(--color-bg); box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
-    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; max-width: var(--max-width); margin: 0 auto; }
-    .logo img { height: 55px; width: auto; max-width: 280px; object-fit: contain;}
-    .logo-icon { width: 40px; height: 40px; background: var(--color-secondary); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
-    .logo-icon svg { width: 24px; height: 24px; fill: var(--color-primary); }
-
-    .nav-desktop ul { list-style: none; display: flex; gap: 32px; margin: 0; padding: 0; }
-    .nav-desktop a { font-family: var(--font-heading); font-weight: 600; font-size: 0.9rem; color: var(--color-primary); text-decoration: none; transition: color 0.2s; }
-    .nav-desktop a:hover, .nav-desktop a.active { color: var(--color-accent); }
-
-    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
-    .hamburger span { display: block; width: 26px; height: 3px; background: var(--color-primary); border-radius: 2px; transition: all 0.3s; }
-    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
-    .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
-
-    .nav-mobile { display: none; background: var(--color-bg); border-top: 1px solid #eee; }
-    .nav-mobile.open { display: block; }
-    .nav-mobile ul { list-style: none; padding: 0; margin: 0; }
-    .nav-mobile li { border-bottom: 1px solid #f0f0f0; }
-    .nav-mobile a { display: block; padding: 14px 24px; font-family: var(--font-heading); font-weight: 600; font-size: 0.95rem; color: var(--color-primary); }
-
-    @media (max-width: 768px) { .nav-desktop { display: none; } .hamburger { display: flex; } }
-
-    /* Page Header */
-    .page-header {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-    }
-    .page-header-img {
-      width: 100%;
-      height: auto;
-      max-height: 650px;
-      object-fit: cover;
-    }
-
-    .page-header-content {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      /* Cambiamos 24px por 10% para empujarlo hacia el centro-izquierdo */
-      padding: 20px 10%; 
-      background: linear-gradient(transparent, rgba(26, 60, 110, 0.9));
-      /* Alineamos el texto a la izquierda */
-      text-align: left; 
-    }
-      
-    .page-header h1 { font-family: var(--font-heading); font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; color: var(--color-text-light); }
-    .page-header p { font-size: 1.1rem; color: rgba(255,255,255,0.8); margin-top: 12px; }
-
-    /* En celular el banner ya trae su propio texto: el título va debajo de la imagen */
-    @media (max-width: 768px) {
-      .page-header-content { position: static; padding: 24px; text-align: center; background: var(--color-bg-alt); }
-      .page-header h1 { color: var(--color-primary); }
-      .page-header p { color: var(--color-text-muted); font-size: 1.05rem; margin-top: 6px; }
-      main .page-content { padding: 0; }
-      main #cta-cards { padding: 32px 0; }
-      .cta-card .cta-img { order: -1; }
-    }
-
-    /* Content */
-    .page-content { padding: var(--section-padding); }
-
-    .about-section { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-    @media (max-width: 768px) { .about-section { grid-template-columns: 1fr; } }
-
-    .about-text h2 { font-family: var(--font-heading); font-size: 1.8rem; color: var(--color-primary); margin-bottom: 16px; }
-    .about-text p { color: var(--color-text-muted); margin-bottom: 16px; line-height: 1.7; }
-
-    .about-image { background: var(--color-bg-alt); height: 300px; border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; }
-    .about-image svg { width: 120px; height: 120px; fill: var(--color-primary); opacity: 0.3; }
-
-    .mission-vision { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; margin-top: 48px; }
-    .mv-card { background: var(--color-bg-alt); padding: 36px; border-radius: var(--border-radius); text-align: center; }
-    .mv-card h3 { font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-primary); margin-bottom: 12px; }
-    .mv-card p { color: var(--color-text-muted); }
-
-    .values { margin-top: 48px; }
-    .values h2 { font-family: var(--font-heading); font-size: 1.5rem; color: var(--color-primary); text-align: center; margin-bottom: 32px; }
-    .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
-    .value-item { text-align: center; padding: 20px; }
-    .value-item svg { width: 48px; height: 48px; fill: var(--color-secondary); margin-bottom: 12px; }
-    .value-item h4 { font-family: var(--font-heading); font-size: 1rem; color: var(--color-primary); margin-bottom: 8px; }
-    .value-item p { font-size: 0.9rem; color: var(--color-text-muted); }
-
-    /* CTA Cards */
-    #cta-cards {
-      padding: var(--section-padding);
-    }
-    .cta-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .cta-card {
-      background: var(--color-bg);
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      transition: transform 0.25s, box-shadow 0.25s;
-      display: flex;
-      flex-direction: row;
-      align-items: stretch;
-      min-height: 320px;
-    }
-    .cta-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.14);
-    }
-    .cta-card .cta-img {
-      width: 50%;
-      height: auto;
-      min-height: 300px;
-      object-fit: cover;
-      object-position: center;
-    }
-    .cta-card .cta-content {
-      width: 50%;
-      padding: 40px;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .cta-content h3 {
-      font-family: var(--font-heading);
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--color-primary);
-      margin-bottom: 16px;
-    }
-    .cta-content p {
-      font-family: var(--font-body);
-      font-size: 1.1rem;
-      color: var(--color-text-muted);
-      line-height: 1.7;
-    }
-
-    .cta-card:nth-child(2) {
-      flex-direction: row;
-    }
-
-    @media (max-width: 768px) {
-      .cta-card { flex-direction: column !important; }
-      .cta-card .cta-img { width: 100%; height: 220px; min-height: 0; }
-      .cta-card .cta-content { width: 100%; text-align: center; }
-    }
-
-    /* WhatsApp Float Button */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      width: 60px;
-      height: 60px;
-      background: #25D366;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-      z-index: 9999;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .whatsapp-float:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
-    }
-    .whatsapp-float svg {
-      width: 32px;
-      height: 32px;
-      fill: white;
-    }
-
-    /* Footer */
-  </style>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="js/main.js" defer></script>
 </head>
 <body>
 
+  <!-- ===== HEADER ===== -->
   <header class="site-header">
     <div class="header-inner container">
       <a href="index.html" class="logo">
-        <img src="public/Logo_Finansuenos%20(1).webp" alt="Finansuenos">
+        <img src="public/logo-finansuenos.webp" alt="Finansueños - Ir al inicio" width="400" height="165">
       </a>
-      <nav class="nav-desktop">
+
+      <nav class="nav-desktop" aria-label="Navegación principal">
         <ul>
           <li><a href="tu-credito.html">Tu Crédito</a></li>
           <li><a href="registra-tu-comercio.html">Registra tu comercio</a></li>
-          <li><a href="sobre-nosotros.html" class="active">Sobre Nosotros</a></li>
+          <li><a href="sobre-nosotros.html" class="active" aria-current="page">Sobre Nosotros</a></li>
           <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
         </ul>
       </nav>
-      <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+
+      <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <nav class="nav-mobile" id="mobile-menu">
+
+    <nav class="nav-mobile" id="mobile-menu" aria-label="Navegación móvil">
       <ul>
         <li><a href="tu-credito.html">Tu Crédito</a></li>
         <li><a href="registra-tu-comercio.html">Registra tu comercio</a></li>
-        <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+        <li><a href="sobre-nosotros.html" class="active" aria-current="page">Sobre Nosotros</a></li>
         <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
       </ul>
     </nav>
@@ -248,125 +48,94 @@
 
   <main>
     <section class="page-header">
-      <img src="public/Barner_Sobre-nosotros.webp" alt="Sobre Nosotros" class="page-header-img">
+      <img src="public/Barner_Sobre-nosotros.webp" alt="En Finansueños hacemos que tus metas se hagan realidad con asesoría y soluciones a tu medida" class="page-header-img" width="1920" height="754" fetchpriority="high">
       <div class="page-header-content">
         <h1>Sobre Nosotros</h1>
         <p>Comprometidos con tus sueños</p>
       </div>
     </section>
 
-    <section class="page-content">
-      <div class="container">
-        
-        <!-- CTA Cards -->
-        <section id="cta-cards">
-          <div class="cta-grid">
-            
-            <!-- Tarjeta 1: Juntos paso a paso -->
-            <div class="cta-card">
-              <div class="cta-content">
-                <h3>Juntos paso a paso</h3>
-                <p>Hemos vivido, aprendido y creado con base en la experiencia, una plataforma de verdadera inclusión financiera enfocada en la economía popular de Colombia.</p>
-              </div>
-              <img src="public/juntos-paso-a-paso-1536x1024.webp" alt="Juntos paso a paso" class="cta-img">
-            </div>
+    <section class="section">
+      <div class="container feature-list">
 
-            <!-- Tarjeta 2: Somos tus aliados -->
-            <div class="cta-card">
-              <img src="public/somos-tu-aliados-1-1536x1024.webp" alt="Somos tus aliados" class="cta-img">
-              <div class="cta-content">
-                <h3>Somos tus aliados</h3>
-                <p>Con nuestro cupo podrás comprar tus insumos, herramientas, productos favoritos y pagarlos después, de una manera cómoda y fácil.</p>
-              </div>
-            </div>
-
-            <!-- Tarjeta 3: Vendamos juntos -->
-            <div class="cta-card">
-              <div class="cta-content">
-                <h3>Vendamos juntos</h3>
-                <p>Entendemos tus necesidades y trabajaremos contigo para que puedas aumentar tus ventas financiándole a tus clientes y recibiendo beneficios por ello.</p>
-              </div>
-              <img src="public/Vendamos-juntos-1-1536x1024.webp" alt="Vendamos juntos" class="cta-img">
-            </div>
-
+        <article class="feature-card">
+          <div class="feature-content">
+            <h2>Juntos paso a paso</h2>
+            <p>Hemos vivido, aprendido y creado con base en la experiencia, una plataforma de verdadera inclusión financiera enfocada en la economía popular de Colombia.</p>
           </div>
-        </section>
+          <img src="public/juntos-paso-a-paso-1536x1024.webp" alt="Juntos paso a paso" class="feature-img" width="1536" height="1024" loading="lazy">
+        </article>
+
+        <article class="feature-card">
+          <img src="public/somos-tu-aliados-1-1536x1024.webp" alt="Somos tus aliados" class="feature-img" width="1536" height="1024" loading="lazy">
+          <div class="feature-content">
+            <h2>Somos tus aliados</h2>
+            <p>Con nuestro cupo podrás comprar tus insumos, herramientas, productos favoritos y pagarlos después, de una manera cómoda y fácil.</p>
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-content">
+            <h2>Vendamos juntos</h2>
+            <p>Entendemos tus necesidades y trabajaremos contigo para que puedas aumentar tus ventas financiándole a tus clientes y recibiendo beneficios por ello.</p>
+          </div>
+          <img src="public/Vendamos-juntos-1-1536x1024.webp" alt="Vendamos juntos" class="feature-img" width="1536" height="1024" loading="lazy">
+        </article>
 
       </div>
     </section>
   </main>
 
- <!-- ===== FOOTER INTEGRADO ===== -->
-<footer style="font-family: 'Montserrat', sans-serif; color: #FFFFFF; width: 100%; margin-top: 40px; background-color: #271A8A;">
-  <div style="padding: 50px 0;">
-    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; max-width: 1200px; margin: 0 auto; padding: 0 24px;">
-      
-      <div style="flex: 1; display: flex; justify-content: flex-start; min-width: 250px;">
-        <img src="public/Logo-White_FinanSuenos.webp" alt="Finansueños" style="max-width: 250px; height: auto;">
-      </div>
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-inner">
 
-      <nav style="flex: 1; display: flex; justify-content: center; min-width: 250px;">
-        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 18px; text-align: center;">
-          <li><a href="tu-credito.html" style="color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 1.15rem;">Tu Crédito</a></li>
-          <li><a href="registra-tu-comercio.html" style="color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 1.15rem;">Registra tu comercio</a></li>
-          <li><a href="sobre-nosotros.html" style="color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 1.15rem;">Sobre Nosotros</a></li>
-          <li><a href="preguntas-frecuentes.html" style="color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 1.15rem;">Preguntas frecuentes</a></li>
-        </ul>
-      </nav>
+        <div class="footer-logo">
+          <img src="public/Logo-White_FinanSuenos.webp" alt="Finansueños" width="749" height="308" loading="lazy">
+        </div>
 
-      <div style="flex: 1; display: flex; justify-content: flex-end; min-width: 250px;">
-        <div style="display: flex; flex-direction: column; align-items: flex-start;">
-          <p style="font-family: 'Open Sans', sans-serif; font-size: 1.05rem; margin-bottom: 8px; font-weight: 400; color: #FFFFFF; margin-top: 0;">Contáctenos:</p>
-          <a href="tel:+573218016755" style="display: flex; align-items: center; gap: 12px; color: #FFFFFF; text-decoration: none; font-size: 1.3rem; font-weight: 400; margin-bottom: 12px;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px;">
-               <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-            </svg>
-            321 801 6755
-          </a>
-          <div style="display: flex; gap: 16px; padding-left: 44px;">
-            <a href="https://instagram.com/finansuenos" target="_blank" rel="noopener" aria-label="Instagram de Finansueños">
-              <svg viewBox="0 0 24 24" fill="#FFFFFF" style="width: 28px; height: 28px;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.272 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        <nav class="footer-nav" aria-label="Enlaces del pie de página">
+          <ul>
+            <li><a href="tu-credito.html">Tu Crédito</a></li>
+            <li><a href="registra-tu-comercio.html">Registra tu comercio</a></li>
+            <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+            <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-contact">
+          <div class="footer-contact-content">
+            <p class="footer-contact-label">Contáctenos:</p>
+            <a href="tel:+573218016755" class="footer-phone">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              321 801 6755
             </a>
-            <a href="https://www.facebook.com/finansuenos-perfil" target="_blank" rel="noopener" aria-label="Facebook de Finansueños">
-              <svg viewBox="0 0 24 24" fill="#FFFFFF" style="width: 28px; height: 28px;"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.35c-.538 0-.65.221-.65.778v1.222h2l-.209 2h-1.791v7h-3v-7h-2v-2h2v-2.308c0-1.769.931-2.692 3.029-2.692h1.971v3z"/></svg>
-            </a>
+            <div class="footer-social">
+              <a href="https://instagram.com/finansuenos" target="_blank" rel="noopener" aria-label="Instagram de Finansueños">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.272 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </a>
+              <a href="https://www.facebook.com/finansuenos-perfil" target="_blank" rel="noopener" aria-label="Facebook de Finansueños">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.35c-.538 0-.65.221-.65.778v1.222h2l-.209 2h-1.791v7h-3v-7h-2v-2h2v-2.308c0-1.769.931-2.692 3.029-2.692h1.971v3z"/></svg>
+              </a>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
-  </div>
 
-  <div style="background-color: #221C35 !important; padding: 18px 0; width: 100%;">
-    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; font-family: 'Open Sans', sans-serif; font-size: 0.95rem; color: #FFFFFF; max-width: 1200px; margin: 0 auto; padding: 0 24px;">
-      <p style="margin: 0;">Finansueños 2026. Todos los derechos reservados.</p>
-      <p style="margin: 0;">Diseño y desarrollo: Departamento de Sistemas - Arpesod Asociados SAS</p>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <p>Finansueños 2026. Todos los derechos reservados.</p>
+        <p>Diseño y desarrollo: Departamento de Sistemas - Arpesod Asociados SAS</p>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const hamburgerBtn = document.getElementById('hamburger-btn');
-      const mobileMenu = document.getElementById('mobile-menu');
-      hamburgerBtn.addEventListener('click', () => {
-        const isOpen = mobileMenu.classList.toggle('open');
-        hamburgerBtn.classList.toggle('active');
-        hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
-        mobileMenu.setAttribute('aria-hidden', String(!isOpen));
-      });
-      mobileMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          mobileMenu.classList.remove('open');
-          hamburgerBtn.classList.remove('active');
-          hamburgerBtn.setAttribute('aria-expanded', 'false');
-          mobileMenu.setAttribute('aria-hidden', 'true');
-        });
-      });
-    });
-  </script>
-  <!-- WhatsApp Float Button -->
+  <!-- Botón flotante de WhatsApp -->
   <a href="https://wa.me/573218016755" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
 
 </body>

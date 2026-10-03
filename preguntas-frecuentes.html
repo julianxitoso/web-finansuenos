@@ -3,253 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Preguntas Frecuentes - Finansuenos</title>
-  <meta name="description" content="Encuentra las respuestas a las preguntas más frecuentes sobre créditos Finansuenos.">
+  <title>Preguntas Frecuentes - Finansueños</title>
+  <meta name="description" content="Encuentra las respuestas a las preguntas más frecuentes sobre tu crédito Finansueños: pagos, intereses, centrales de riesgo y más.">
   <link rel="icon" href="public/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="footer.css">
-  
-  <style>
-    :root {
-      --color-primary:     #1A3C6E;
-      --color-secondary:   #F5A623;
-      --color-accent:      #2BBFA4;
-      --color-bg:          #FFFFFF;
-      --color-bg-alt:      #F4F7FB;
-      --color-footer-bg:   #1A3C6E;
-      --color-text:        #222222;
-      --color-text-light:  #FFFFFF;
-      --color-text-muted:   #666666;
-      
-      --font-heading: 'Montserrat', sans-serif;
-      --font-body:    'Open Sans', sans-serif;
-      
-      --max-width: 1200px;
-      --section-padding: 60px 20px;
-      --border-radius: 12px;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); line-height: 1.6; }
-
-    .container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
-    a { color: inherit; text-decoration: none; }
-
-    /* Header */
-    .site-header { position: sticky; top: 0; z-index: 1000; background: var(--color-bg); box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
-    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; max-width: var(--max-width); margin: 0 auto; }
-    .logo img { height: 55px; width: auto; max-width: 280px; object-fit: contain;}
-    .logo-icon { width: 40px; height: 40px; background: var(--color-secondary); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
-    .logo-icon svg { width: 24px; height: 24px; fill: var(--color-primary); }
-
-    .nav-desktop ul { list-style: none; display: flex; gap: 32px; margin: 0; padding: 0; }
-    .nav-desktop a { font-family: var(--font-heading); font-weight: 600; font-size: 0.9rem; color: var(--color-primary); text-decoration: none; transition: color 0.2s; }
-    .nav-desktop a:hover, .nav-desktop a.active { color: var(--color-accent); }
-
-    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
-    .hamburger span { display: block; width: 26px; height: 3px; background: var(--color-primary); border-radius: 2px; transition: all 0.3s; }
-    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
-    .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
-
-    .nav-mobile { display: none; background: var(--color-bg); border-top: 1px solid #eee; }
-    .nav-mobile.open { display: block; }
-    .nav-mobile ul { list-style: none; padding: 0; margin: 0; }
-    .nav-mobile li { border-bottom: 1px solid #f0f0f0; }
-    .nav-mobile a { display: block; padding: 14px 24px; font-family: var(--font-heading); font-weight: 600; font-size: 0.95rem; color: var(--color-primary); }
-
-    @media (max-width: 768px) { .nav-desktop { display: none; } .hamburger { display: flex; } }
-
-    /* Page Header */
-    .page-header {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-    }
-    .page-header-img {
-      width: 100%;
-      height: auto;
-      max-height: 650px;
-      object-fit: cover;
-    }
-
-    .page-header-content {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      /* Cambiamos 24px por 10% para empujarlo hacia el centro-izquierdo */
-      padding: 20px 10%; 
-      background: linear-gradient(transparent, rgba(26, 60, 110, 0.9));
-      /* Alineamos el texto a la izquierda */
-      text-align: left; 
-    }
-
-    .page-header h1 { font-family: var(--font-heading); font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; color: var(--color-text-light); }
-    .page-header p { font-size: 1.1rem; color: rgba(255,255,255,0.8); margin-top: 12px; }
-
-    /* En celular el banner ya trae su propio texto: el título va debajo de la imagen */
-    @media (max-width: 768px) {
-      .page-header-content { position: static; padding: 24px; text-align: center; background: var(--color-bg-alt); }
-      .page-header h1 { color: var(--color-primary); }
-      .page-header p { color: var(--color-text-muted); font-size: 1.05rem; margin-top: 6px; }
-    }
-
-    /* Content */
-    .page-content { padding: var(--section-padding); max-width: 800px; margin: 0 auto; }
-
-    .intro { text-align: center; margin-bottom: 40px; }
-    .intro p { color: var(--color-text-muted); }
-
-    /* FAQ Accordion */
-    .faq-container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .faq-item {
-      background: var(--color-bg);
-      border: 1px solid #e0e0e0;
-      border-radius: 8px;
-      margin-bottom: 12px;
-      overflow: hidden;
-    }
-    .faq-item summary {
-      padding: 18px 20px;
-      font-family: var(--font-heading);
-      font-weight: 600;
-      font-size: 1rem;
-      color: var(--color-primary);
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      list-style: none;
-    }
-    .faq-item summary::-webkit-details-marker {
-      display: none;
-    }
-    .faq-item summary::after {
-      content: '+';
-      font-size: 1.4rem;
-      color: var(--color-secondary);
-      transition: transform 0.3s;
-    }
-    .faq-item[open] summary::after {
-      transform: rotate(45deg);
-    }
-    .faq-item summary:hover {
-      background: var(--color-bg-alt);
-    }
-    .faq-answer {
-      padding: 0 20px 18px;
-      color: var(--color-text-muted);
-      line-height: 1.7;
-    }
-    .faq-answer p {
-      margin: 0;
-    }
-
-    .contact-box { background: var(--color-bg-alt); padding: 36px; border-radius: var(--border-radius); text-align: center; margin-top: 48px; }
-    .contact-box h3 { font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-primary); margin-bottom: 12px; }
-    .contact-box p { color: var(--color-text-muted); margin-bottom: 20px; }
-    .contact-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    .btn-contact {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      border-radius: 50px;
-      font-family: var(--font-heading);
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: transform 0.2s;
-    }
-    .btn-contact:hover { transform: scale(1.05); }
-    .btn-phone {
-      background: var(--color-primary);
-      color: var(--color-text-light);
-    }
-    .btn-whatsapp {
-      background: #25D366;
-      color: white;
-    }
-    .btn-whatsapp svg { width: 20px; height: 20px; fill: white; }
-
-    /* WhatsApp Float Button */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      width: 60px;
-      height: 60px;
-      background: #25D366;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-      z-index: 9999;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .whatsapp-float:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
-    }
-    .whatsapp-float svg {
-      width: 32px;
-      height: 32px;
-      fill: white;
-    }
-
-    /* Footer */
-  </style>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="js/main.js" defer></script>
 </head>
 <body>
 
+  <!-- ===== HEADER ===== -->
   <header class="site-header">
     <div class="header-inner container">
       <a href="index.html" class="logo">
-        <img src="public/Logo_Finansuenos%20(1).webp" alt="Finansuenos">
+        <img src="public/logo-finansuenos.webp" alt="Finansueños - Ir al inicio" width="400" height="165">
       </a>
-      <nav class="nav-desktop">
+
+      <nav class="nav-desktop" aria-label="Navegación principal">
         <ul>
           <li><a href="tu-credito.html">Tu Crédito</a></li>
           <li><a href="registra-tu-comercio.html">Registra tu comercio</a></li>
           <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
-          <li><a href="preguntas-frecuentes.html" class="active">Preguntas frecuentes</a></li>
+          <li><a href="preguntas-frecuentes.html" class="active" aria-current="page">Preguntas frecuentes</a></li>
         </ul>
       </nav>
-      <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+
+      <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <nav class="nav-mobile" id="mobile-menu">
+
+    <nav class="nav-mobile" id="mobile-menu" aria-label="Navegación móvil">
       <ul>
         <li><a href="tu-credito.html">Tu Crédito</a></li>
         <li><a href="registra-tu-comercio.html">Registra tu comercio</a></li>
         <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
-        <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
+        <li><a href="preguntas-frecuentes.html" class="active" aria-current="page">Preguntas frecuentes</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
     <section class="page-header">
-      <img src="public/Pregunta-frecuentes.webp" alt="Preguntas Frecuentes" class="page-header-img">
+      <img src="public/Pregunta-frecuentes.webp" alt="¿Tienes alguna duda?" class="page-header-img" width="1895" height="752" fetchpriority="high">
       <div class="page-header-content">
         <h1>Preguntas Frecuentes</h1>
         <p>Encuentra respuestas a tus dudas</p>
       </div>
     </section>
 
-    <section class="page-content">
-      <div class="faq-container">
-        
+    <section class="section">
+      <div class="container container--narrow">
+
         <details class="faq-item">
           <summary>¿Qué es FinanSueños?</summary>
           <div class="faq-answer">
@@ -260,7 +68,7 @@
         <details class="faq-item" open>
           <summary>¿Cómo interpreto la factura que recibo cada vez que realizo un pago en mi correo?</summary>
           <div class="faq-answer">
-            <p> Una vez tu pago sea ingresado a nuestro sistema, a su correo electrónico registrado le enviaremos una factura electrónica detallada de la operación. En esta factura, se especifican los valores cancelados por concepto de intereses corrientes, avales y gastos asociados al crédito, la diferencia que existirá entre el valor de la factura y el valor pagado, corresponde al capital abonado al principal de la obligación. Es fundamental conservar los soportes de pago de las cuotas pactadas inicialmente, ya sea que realice los pagos en puntos autorizados como Electrocréditos del Cauca o a través de convenios establecidos.</p>
+            <p>Una vez tu pago sea ingresado a nuestro sistema, a su correo electrónico registrado le enviaremos una factura electrónica detallada de la operación. En esta factura, se especifican los valores cancelados por concepto de intereses corrientes, avales y gastos asociados al crédito, la diferencia que existirá entre el valor de la factura y el valor pagado, corresponde al capital abonado al principal de la obligación. Es fundamental conservar los soportes de pago de las cuotas pactadas inicialmente, ya sea que realice los pagos en puntos autorizados como Electrocréditos del Cauca o a través de convenios establecidos.</p>
           </div>
         </details>
 
@@ -274,84 +82,84 @@
         <details class="faq-item">
           <summary>¿Por qué se cobran intereses si en el crédito ya están incluidos?</summary>
           <div class="faq-answer">
-            <p> Las cuotas mensuales que usted cancela incluyen diversos componentes: el capital prestado, los intereses corrientes, avales y gastos asociados al crédito. Si incurre en mora, es decir, si se retrasa en el pago de alguna cuota, se generarán intereses moratorios. Recuerde que atrasarse en sus pagos puede afectar negativamente su historial crediticio y generar reportes negativos en las centrales de riesgo.</p>
+            <p>Las cuotas mensuales que usted cancela incluyen diversos componentes: el capital prestado, los intereses corrientes, avales y gastos asociados al crédito. Si incurre en mora, es decir, si se retrasa en el pago de alguna cuota, se generarán intereses moratorios. Recuerde que atrasarse en sus pagos puede afectar negativamente su historial crediticio y generar reportes negativos en las centrales de riesgo.</p>
           </div>
         </details>
 
         <details class="faq-item">
           <summary>¿Cómo es el proceso de pago de mi crédito?</summary>
           <div class="faq-answer">
-            <p> Una vez que su crédito es aprobado, entrará en contacto directo con nuestro personal de Call Center especializado. Nuestro equipo le proporcionará toda la información necesaria sobre su obligación, responderá a sus inquietudes y le guiará sobre los diferentes convenios de pago disponibles para facilitar el cumplimiento de su obligación financiera con nuestra entidad.</p>
+            <p>Una vez que su crédito es aprobado, entrará en contacto directo con nuestro personal de Call Center especializado. Nuestro equipo le proporcionará toda la información necesaria sobre su obligación, responderá a sus inquietudes y le guiará sobre los diferentes convenios de pago disponibles para facilitar el cumplimiento de su obligación financiera con nuestra entidad.</p>
           </div>
         </details>
 
         <details class="faq-item">
           <summary>¿Cuánto tiempo permanezco reportado en Datacrédito después de pagar mi deuda?</summary>
           <div class="faq-answer">
-            <p> Según la Ley 1266 de 2008, conocida como la Ley de Hábeas Data, el tiempo máximo que una persona puede permanecer reportada en una central de riesgo es de 8 años. Después de cancelar la totalidad de la deuda, el reporte negativo permanecerá por un período equivalente al doble del tiempo que estuvo en mora, con un máximo de 4 años. Por ejemplo, si estuvo en mora durante 6 meses, el reporte negativo permanecerá durante 12 meses (1 año) después del pago.</p>
+            <p>Según la Ley 1266 de 2008, conocida como la Ley de Hábeas Data, el tiempo máximo que una persona puede permanecer reportada en una central de riesgo es de 8 años. Después de cancelar la totalidad de la deuda, el reporte negativo permanecerá por un período equivalente al doble del tiempo que estuvo en mora, con un máximo de 4 años. Por ejemplo, si estuvo en mora durante 6 meses, el reporte negativo permanecerá durante 12 meses (1 año) después del pago.</p>
           </div>
         </details>
 
         <details class="faq-item">
           <summary>¿Qué descuento puedo obtener por pago anticipado?</summary>
           <div class="faq-answer">
-            <p> Al realizar un pago anticipado, pagarás únicamente el saldo de capital de la obligación y los intereses corrientes y avales causados a la fecha, obtendrá descuento en los intereses corrientes y otros gastos asociados al crédito. El monto del descuento dependerá de la fecha en que se realice el pago anticipado y del saldo pendiente de la obligación. Es recomendable comunicarse con nuestro equipo para conocer el valor exacto del descuento aplicable en su caso. </p>
+            <p>Al realizar un pago anticipado, pagarás únicamente el saldo de capital de la obligación y los intereses corrientes y avales causados a la fecha, obtendrá descuento en los intereses corrientes y otros gastos asociados al crédito. El monto del descuento dependerá de la fecha en que se realice el pago anticipado y del saldo pendiente de la obligación. Es recomendable comunicarse con nuestro equipo para conocer el valor exacto del descuento aplicable en su caso.</p>
           </div>
         </details>
 
         <details class="faq-item">
           <summary>¿Cuál es mi soporte de pago si realizo pagos a través de convenios?</summary>
           <div class="faq-answer">
-            <p> Si efectúa pagos mediante convenios autorizados, es esencial que envíe el soporte de pago al agente del Call Center encargado de su obligación. Este agente se asegurará de que el pago se aplique correctamente a su cuenta, para ello, recuerde que la referencia de pago es la cédula del titular de la obligación. Le recomendamos conservar todos los comprobantes de pago hasta la finalización de su crédito, momento en el cual podrá solicitar el certificado de Paz y Salvo.</p>
+            <p>Si efectúa pagos mediante convenios autorizados, es esencial que envíe el soporte de pago al agente del Call Center encargado de su obligación. Este agente se asegurará de que el pago se aplique correctamente a su cuenta, para ello, recuerde que la referencia de pago es la cédula del titular de la obligación. Le recomendamos conservar todos los comprobantes de pago hasta la finalización de su crédito, momento en el cual podrá solicitar el certificado de Paz y Salvo.</p>
           </div>
         </details>
 
         <details class="faq-item">
           <summary>¿Mi tasa de interés aumenta cada mes?</summary>
           <div class="faq-answer">
-            <p> La tasa de interés corriente de su crédito no aumenta mensualmente. Sin embargo, la Superintendencia Financiera de Colombia establece mensualmente la tasa de usura, que es el límite máximo que pueden cobrar las entidades financieras por intereses. Si esta tasa varía, la disminución de la misma realizará un ajuste en la última cuota de su crédito para reflejar dicha variación, si la tasa aumenta, su crédito no tendrá cambios en sus valores a pagar. Es importante revisar periódicamente las comunicaciones oficiales para estar al tanto de posibles cambios.</p>
+            <p>La tasa de interés corriente de su crédito no aumenta mensualmente. Sin embargo, la Superintendencia Financiera de Colombia establece mensualmente la tasa de usura, que es el límite máximo que pueden cobrar las entidades financieras por intereses. Si esta tasa varía, la disminución de la misma realizará un ajuste en la última cuota de su crédito para reflejar dicha variación, si la tasa aumenta, su crédito no tendrá cambios en sus valores a pagar. Es importante revisar periódicamente las comunicaciones oficiales para estar al tanto de posibles cambios.</p>
           </div>
         </details>
 
         <details class="faq-item">
           <summary>¿Qué pasa si mi deuda no se paga después de varios meses?</summary>
           <div class="faq-answer">
-            <p> Si su obligación presenta retrasos prolongados, se iniciará un proceso de cobro prejurídico que puede incluir visitas de nuestros colaboradores en campo. Además, se realizará el reporte correspondiente ante las centrales de riesgo, lo que afectará su historial crediticio. Si la deuda continúa sin ser cancelada, el caso puede ser remitido a firmas de abogados para iniciar procesos jurídicos con el fin de recuperar el monto adeudado y al valor de la obligación, se le sumarán los costos jurídicos.</p>
+            <p>Si su obligación presenta retrasos prolongados, se iniciará un proceso de cobro prejurídico que puede incluir visitas de nuestros colaboradores en campo. Además, se realizará el reporte correspondiente ante las centrales de riesgo, lo que afectará su historial crediticio. Si la deuda continúa sin ser cancelada, el caso puede ser remitido a firmas de abogados para iniciar procesos jurídicos con el fin de recuperar el monto adeudado y al valor de la obligación, se le sumarán los costos jurídicos.</p>
           </div>
         </details>
 
         <details class="faq-item">
           <summary>¿Puedo solicitar una extensión del plazo de pago si tengo dificultades financieras?</summary>
           <div class="faq-answer">
-            <p> Entendemos que pueden surgir situaciones imprevistas que afecten su capacidad de pago. En tales casos, le recomendamos comunicarse con el encargado de su cartera o llamar a nuestra línea nacional al <a href="tel:+573104949007" style="color: var(--color-primary); font-weight: 600;">310 494 9007</a>. Nuestro equipo evaluará su situación y le ofrecerá opciones que se ajusten a sus necesidades actuales.</p>
+            <p>Entendemos que pueden surgir situaciones imprevistas que afecten su capacidad de pago. En tales casos, le recomendamos comunicarse con el encargado de su cartera o llamar a nuestra línea nacional al <a href="tel:+573104949007">310 494 9007</a>. Nuestro equipo evaluará su situación y le ofrecerá opciones que se ajusten a sus necesidades actuales.</p>
           </div>
         </details>
 
         <details class="faq-item">
           <summary>¿Cómo puedo saber si mi crédito está reportado en las centrales de riesgo?</summary>
           <div class="faq-answer">
-            <p> FinanSueños reporta mensualmente la información crediticia de todos sus clientes, tanto positiva como negativa, a las centrales de riesgo. Para verificar el estado de su crédito, puede acceder a las plataformas digitales de los burós de crédito (MiDataCrédito, TransUnion – Cifin) o comunicarse con nuestra línea de atención al cliente al <a href="tel:+573104949007" style="color: var(--color-primary); font-weight: 600;">310 494 9007</a>, donde le brindaremos la asistencia necesaria.</p>
+            <p>FinanSueños reporta mensualmente la información crediticia de todos sus clientes, tanto positiva como negativa, a las centrales de riesgo. Para verificar el estado de su crédito, puede acceder a las plataformas digitales de los burós de crédito (MiDataCrédito, TransUnion – Cifin) o comunicarse con nuestra línea de atención al cliente al <a href="tel:+573104949007">310 494 9007</a>, donde le brindaremos la asistencia necesaria.</p>
           </div>
         </details>
 
         <details class="faq-item">
           <summary>¿Qué sucede si no puedo pagar a tiempo?</summary>
           <div class="faq-answer">
-            <p> Si anticipa que no podrá realizar un pago en la fecha establecida, es crucial que notifique de inmediato al encargado de su cartera. De esta manera, podremos registrar la novedad y explorar alternativas para apoyarlo en su situación, evitando así mayores afectaciones a su historial crediticio. Tu tranquilidad financiera es nuestro mayor interés.</p>
+            <p>Si anticipa que no podrá realizar un pago en la fecha establecida, es crucial que notifique de inmediato al encargado de su cartera. De esta manera, podremos registrar la novedad y explorar alternativas para apoyarlo en su situación, evitando así mayores afectaciones a su historial crediticio. Tu tranquilidad financiera es nuestro mayor interés.</p>
           </div>
         </details>
 
         <details class="faq-item">
           <summary>¿Puedo cambiar la fecha de mi pago mensual?</summary>
           <div class="faq-answer">
-            <p> Sí, es posible solicitar un cambio en la fecha de su pago mensual, siempre y cuando la nueva fecha esté dentro del mismo mes en curso. Para gestionar esta modificación, comuníquese con el agente encargado de su obligación, quien le orientará sobre el proceso a seguir.</p>
+            <p>Sí, es posible solicitar un cambio en la fecha de su pago mensual, siempre y cuando la nueva fecha esté dentro del mismo mes en curso. Para gestionar esta modificación, comuníquese con el agente encargado de su obligación, quien le orientará sobre el proceso a seguir.</p>
           </div>
         </details>
 
         <details class="faq-item">
           <summary>¿Por qué, si pago por convenio, el pago se demora en verse reflejado?</summary>
           <div class="faq-answer">
-            <p> Cuando realiza pagos a través de convenios, es fundamental que ingrese correctamente la referencia requerida para el pago, en este caso, siempre será la cédula del titular de la obligación. Si hay errores en esta información, el sistema puede tardar más tiempo en identificar y aplicar el pago a su cuenta. Para evitar demoras, asegúrese de proporcionar los datos correctos al momento de realizar el pago y conserve el comprobante correspondiente.</p>
+            <p>Cuando realiza pagos a través de convenios, es fundamental que ingrese correctamente la referencia requerida para el pago, en este caso, siempre será la cédula del titular de la obligación. Si hay errores en esta información, el sistema puede tardar más tiempo en identificar y aplicar el pago a su cuenta. Para evitar demoras, asegúrese de proporcionar los datos correctos al momento de realizar el pago y conserve el comprobante correspondiente.</p>
           </div>
         </details>
 
@@ -359,78 +167,56 @@
     </section>
   </main>
 
- <!-- ===== FOOTER INTEGRADO ===== -->
-<footer style="font-family: 'Montserrat', sans-serif; color: #FFFFFF; width: 100%; margin-top: 40px; background-color: #271A8A;">
-  <div style="padding: 50px 0;">
-    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; max-width: 1200px; margin: 0 auto; padding: 0 24px;">
-      
-      <div style="flex: 1; display: flex; justify-content: flex-start; min-width: 250px;">
-        <img src="public/Logo-White_FinanSuenos.webp" alt="Finansueños" style="max-width: 250px; height: auto;">
-      </div>
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-inner">
 
-      <nav style="flex: 1; display: flex; justify-content: center; min-width: 250px;">
-        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 18px; text-align: center;">
-          <li><a href="tu-credito.html" style="color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 1.15rem;">Tu Crédito</a></li>
-          <li><a href="registra-tu-comercio.html" style="color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 1.15rem;">Registra tu comercio</a></li>
-          <li><a href="sobre-nosotros.html" style="color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 1.15rem;">Sobre Nosotros</a></li>
-          <li><a href="preguntas-frecuentes.html" style="color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 1.15rem;">Preguntas frecuentes</a></li>
-        </ul>
-      </nav>
+        <div class="footer-logo">
+          <img src="public/Logo-White_FinanSuenos.webp" alt="Finansueños" width="749" height="308" loading="lazy">
+        </div>
 
-      <div style="flex: 1; display: flex; justify-content: flex-end; min-width: 250px;">
-        <div style="display: flex; flex-direction: column; align-items: flex-start;">
-          <p style="font-family: 'Open Sans', sans-serif; font-size: 1.05rem; margin-bottom: 8px; font-weight: 400; color: #FFFFFF; margin-top: 0;">Contáctenos:</p>
-          <a href="tel:+573218016755" style="display: flex; align-items: center; gap: 12px; color: #FFFFFF; text-decoration: none; font-size: 1.3rem; font-weight: 400; margin-bottom: 12px;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px;">
-               <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-            </svg>
-            321 801 6755
-          </a>
-          <div style="display: flex; gap: 16px; padding-left: 44px;">
-            <a href="https://instagram.com/finansuenos" target="_blank" rel="noopener" aria-label="Instagram de Finansueños">
-              <svg viewBox="0 0 24 24" fill="#FFFFFF" style="width: 28px; height: 28px;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.272 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        <nav class="footer-nav" aria-label="Enlaces del pie de página">
+          <ul>
+            <li><a href="tu-credito.html">Tu Crédito</a></li>
+            <li><a href="registra-tu-comercio.html">Registra tu comercio</a></li>
+            <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+            <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-contact">
+          <div class="footer-contact-content">
+            <p class="footer-contact-label">Contáctenos:</p>
+            <a href="tel:+573218016755" class="footer-phone">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              321 801 6755
             </a>
-            <a href="https://www.facebook.com/finansuenos-perfil" target="_blank" rel="noopener" aria-label="Facebook de Finansueños">
-              <svg viewBox="0 0 24 24" fill="#FFFFFF" style="width: 28px; height: 28px;"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.35c-.538 0-.65.221-.65.778v1.222h2l-.209 2h-1.791v7h-3v-7h-2v-2h2v-2.308c0-1.769.931-2.692 3.029-2.692h1.971v3z"/></svg>
-            </a>
+            <div class="footer-social">
+              <a href="https://instagram.com/finansuenos" target="_blank" rel="noopener" aria-label="Instagram de Finansueños">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.272 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </a>
+              <a href="https://www.facebook.com/finansuenos-perfil" target="_blank" rel="noopener" aria-label="Facebook de Finansueños">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.35c-.538 0-.65.221-.65.778v1.222h2l-.209 2h-1.791v7h-3v-7h-2v-2h2v-2.308c0-1.769.931-2.692 3.029-2.692h1.971v3z"/></svg>
+              </a>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
-  </div>
 
-  <div style="background-color: #221C35 !important; padding: 18px 0; width: 100%;">
-    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; font-family: 'Open Sans', sans-serif; font-size: 0.95rem; color: #FFFFFF; max-width: 1200px; margin: 0 auto; padding: 0 24px;">
-      <p style="margin: 0;">Finansueños 2026. Todos los derechos reservados.</p>
-      <p style="margin: 0;">Diseño y desarrollo: Departamento de Sistemas - Arpesod Asociados SAS</p>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <p>Finansueños 2026. Todos los derechos reservados.</p>
+        <p>Diseño y desarrollo: Departamento de Sistemas - Arpesod Asociados SAS</p>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Hamburger
-      const hamburgerBtn = document.getElementById('hamburger-btn');
-      const mobileMenu = document.getElementById('mobile-menu');
-      hamburgerBtn.addEventListener('click', () => {
-        const isOpen = mobileMenu.classList.toggle('open');
-        hamburgerBtn.classList.toggle('active');
-        hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
-        mobileMenu.setAttribute('aria-hidden', String(!isOpen));
-      });
-      mobileMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          mobileMenu.classList.remove('open');
-          hamburgerBtn.classList.remove('active');
-          hamburgerBtn.setAttribute('aria-expanded', 'false');
-          mobileMenu.setAttribute('aria-hidden', 'true');
-        });
-      });
-    });
-  </script>
-  <!-- WhatsApp Float Button -->
+  <!-- Botón flotante de WhatsApp -->
   <a href="https://wa.me/573218016755" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
 
 </body>

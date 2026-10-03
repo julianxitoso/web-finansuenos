@@ -3,300 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registra tu Comercio - Finansuenos</title>
+  <title>Registra tu Comercio - Finansueños</title>
+  <meta name="description" content="Registra tu comercio como aliado de Finansueños y ofrece crédito a tus clientes.">
   <link rel="icon" href="public/logo.png" type="image/png">
-  <meta name="description" content="Ponte en contacto con Finansueños o registra tu actividad comercial.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-  
-  <style>
-    /* ============================================
-       VARIABLES CSS
-       ============================================ */
-    :root {
-      --color-primary:     #1A3C6E;
-      --color-secondary:   #F5A623;
-      --color-accent:      #2BBFA4;
-      --color-bg:          #FFFFFF;
-      --color-bg-alt:      #F4F7FB;
-      --color-text:        #222222;
-      --color-text-light:  #FFFFFF;
-      --color-text-muted:  #666666;
-      
-      --font-heading: 'Montserrat', sans-serif;
-      --font-body:    'Open Sans', sans-serif;
-      
-      --max-width: 1200px;
-      --section-padding: 60px 20px;
-      --border-radius: 12px;
-      --shadow: 0 4px 24px rgba(0,0,0,0.10);
-    }
-
-    /* ============================================
-       NOTIFICACIÓN TOAST (Mensaje de Éxito)
-       ============================================ */
-    .toast-message {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: #FFFFFF;
-      border-left: 6px solid var(--color-accent); /* Borde verde cian */
-      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-      padding: 16px 24px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      z-index: 10000;
-      /* Inicia escondido fuera de la pantalla */
-      transform: translateX(150%);
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      font-family: var(--font-body);
-      font-weight: 600;
-      color: var(--color-text);
-    }
-
-    /* Clase que lo hace aparecer */
-    .toast-message.show {
-      transform: translateX(0);
-    }
-
-    .toast-icon {
-      width: 28px;
-      height: 28px;
-      fill: none;
-      stroke: var(--color-accent);
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    /* ============================================
-       RESET Y BASE
-       ============================================ */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    
-    html { scroll-behavior: smooth; }
-    
-    body {
-      font-family: var(--font-body);
-      color: var(--color-text);
-      background: var(--color-bg);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    .container { 
-      width: 100%; 
-      max-width: var(--max-width); 
-      margin: 0 auto; 
-      padding: 0 24px; 
-    }
-    
-    img { max-width: 100%; height: auto; display: block; }
-    a { color: inherit; text-decoration: none; }
-
-    /* ============================================
-       HEADER COMPARTIDO
-       ============================================ */
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: var(--color-bg);
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    }
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 24px;
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-    .logo img { height: 65px; width: auto; max-width: 280px; object-fit: contain; }
-
-    .nav-desktop ul { list-style: none; display: flex; gap: 32px; margin: 0; padding: 0; }
-    .nav-desktop a {
-      font-family: var(--font-heading);
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: var(--color-primary);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-desktop a:hover, .nav-desktop a.active { color: var(--color-accent); }
-
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-    }
-    .hamburger span {
-      display: block;
-      width: 26px;
-      height: 3px;
-      background: var(--color-primary);
-      border-radius: 2px;
-      transition: all 0.3s;
-    }
-    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
-    .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
-
-    .nav-mobile { display: none; background: var(--color-bg); border-top: 1px solid #eee; }
-    .nav-mobile.open { display: block; }
-    .nav-mobile ul { list-style: none; padding: 0; margin: 0; }
-    .nav-mobile li { border-bottom: 1px solid #f0f0f0; }
-    .nav-mobile a {
-      display: block;
-      padding: 14px 24px;
-      font-family: var(--font-heading);
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: var(--color-primary);
-      text-decoration: none;
-    }
-    .nav-mobile a:hover { background: var(--color-bg-alt); }
-
-    @media (max-width: 768px) {
-      .nav-desktop { display: none; }
-      .hamburger { display: flex; }
-    }
-
-    /* ============================================
-       FORMULARIO DE CONTACTO / REGISTRO
-       ============================================ */
-    .contact-section {
-      padding: 80px 20px;
-      background-color: var(--color-bg-alt);
-    }
-    
-    .contact-wrapper {
-      max-width: 800px;
-      margin: 0 auto;
-      background: var(--color-bg);
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      padding: 40px;
-    }
-
-    .contact-header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .contact-header h1 {
-      font-family: var(--font-heading);
-      font-size: 2.2rem;
-      color: var(--color-primary);
-      margin-bottom: 10px;
-    }
-
-    .contact-header p {
-      color: var(--color-text-muted);
-      font-size: 1.1rem;
-    }
-
-    .form-group {
-      margin-bottom: 24px;
-    }
-
-    .form-label {
-      display: block;
-      font-weight: 600;
-      color: var(--color-primary);
-      margin-bottom: 8px;
-    }
-
-    .form-control {
-      width: 100%;
-      padding: 14px 18px;
-      border: 1px solid #d1d9e6;
-      border-radius: 8px;
-      font-family: var(--font-body);
-      font-size: 1rem;
-      color: var(--color-text);
-      transition: border-color 0.3s, box-shadow 0.3s;
-    }
-
-    .form-control:focus {
-      outline: none;
-      border-color: var(--color-accent);
-      box-shadow: 0 0 0 4px rgba(43, 191, 164, 0.1);
-    }
-
-    select.form-control {
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231A3C6E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 16px center;
-      cursor: pointer;
-    }
-
-    textarea.form-control {
-      resize: vertical;
-      min-height: 120px;
-    }
-
-    .btn-submit {
-      width: 100%;
-      background: var(--color-secondary);
-      color: #1A1A1A;
-      font-family: var(--font-heading);
-      font-size: 1.1rem;
-      font-weight: 700;
-      padding: 16px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
-    }
-
-    .btn-submit:hover {
-      background: #e09400;
-      transform: translateY(-2px);
-    }
-
-    @media (max-width: 600px) {
-      .contact-wrapper {
-        padding: 30px 20px;
-      }
-      .contact-header h1 {
-        font-size: 1.8rem;
-      }
-    }
-
-    /* WhatsApp Float Button */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      width: 60px;
-      height: 60px;
-      background: #25D366;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-      z-index: 9999;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .whatsapp-float:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
-    }
-    .whatsapp-float svg {
-      width: 32px;
-      height: 32px;
-      fill: white;
-    }
-  </style>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="js/main.js" defer></script>
 </head>
 <body>
 
@@ -304,47 +19,47 @@
   <header class="site-header">
     <div class="header-inner container">
       <a href="index.html" class="logo">
-        <img src="public/Logo_Finansuenos%20(1).webp" alt="Finansuenos">
+        <img src="public/logo-finansuenos.webp" alt="Finansueños - Ir al inicio" width="400" height="165">
       </a>
-      <nav class="nav-desktop">
+
+      <nav class="nav-desktop" aria-label="Navegación principal">
         <ul>
           <li><a href="tu-credito.html">Tu Crédito</a></li>
-          <li><a href="registra-tu-comercio.html" class="active">Registra tu comercio</a></li>
+          <li><a href="registra-tu-comercio.html" class="active" aria-current="page">Registra tu comercio</a></li>
           <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
           <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
         </ul>
       </nav>
-      <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú" aria-expanded="false">
+
+      <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span><span></span>
       </button>
     </div>
-    <nav class="nav-mobile" id="mobile-menu">
+
+    <nav class="nav-mobile" id="mobile-menu" aria-label="Navegación móvil">
       <ul>
         <li><a href="tu-credito.html">Tu Crédito</a></li>
-        <li><a href="registra-tu-comercio.html">Registra tu comercio</a></li>
+        <li><a href="registra-tu-comercio.html" class="active" aria-current="page">Registra tu comercio</a></li>
         <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
         <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- ===== CONTENIDO DEL FORMULARIO ===== -->
   <main>
     <section class="contact-section">
       <div class="contact-wrapper">
         <div class="contact-header">
-          <h1>Contáctanos</h1>
+          <h1>Registra tu comercio</h1>
           <p>Déjanos tus datos o registra tu comercio para ser parte de Finansueños.</p>
         </div>
 
-      <form id="form-contacto">
+        <form id="form-contacto">
           
           <div class="form-group">
             <label for="nombre" class="form-label">Nombre completo o Razón Social *</label>
             <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ej. Juan Pérez / Inversiones SAS" required>
           </div>
-
-          <!-- NUEVO CAMPO: NIT -->
           <div class="form-group">
             <label for="nit" class="form-label">NIT *</label>
             <input type="text" id="nit" name="nit" class="form-control" placeholder="Ej. 900123456-7" required>
@@ -384,8 +99,6 @@
               <option value="Otro">Otro sector</option>
             </select>
           </div>
-
-          <!-- NUEVO CAMPO: CIUDAD -->
           <div class="form-group">
             <label for="ciudad" class="form-label">Ciudad *</label>
             <input type="text" id="ciudad" name="ciudad" class="form-control" placeholder="Ej. Popayán" required>
@@ -403,129 +116,66 @@
     </section>
   </main>
 
-  <!-- ===== FOOTER INTEGRADO ===== -->
-  <footer style="font-family: 'Montserrat', sans-serif; color: #FFFFFF; width: 100%; background-color: #271A8A;">
-    <div style="padding: 50px 0;">
-      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; max-width: 1200px; margin: 0 auto; padding: 0 24px;">
-        
-        <div style="flex: 1; display: flex; justify-content: flex-start; min-width: 250px;">
-          <img src="public/Logo-White_FinanSuenos.webp" alt="Finansueños" style="max-width: 250px; height: auto;">
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer site-footer--flush">
+    <div class="footer-main">
+      <div class="footer-inner">
+
+        <div class="footer-logo">
+          <img src="public/Logo-White_FinanSuenos.webp" alt="Finansueños" width="749" height="308" loading="lazy">
         </div>
 
-        <nav style="flex: 1; display: flex; justify-content: center; min-width: 250px;">
-          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 18px; text-align: center;">
-            <li><a href="tu-credito.html" style="color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 1.15rem;">Tu Crédito</a></li>
-            <li><a href="registra-tu-comercio.html" style="color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 1.15rem;">Registra tu comercio</a></li>
-            <li><a href="sobre-nosotros.html" style="color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 1.15rem;">Sobre Nosotros</a></li>
-            <li><a href="preguntas-frecuentes.html" style="color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 1.15rem;">Preguntas frecuentes</a></li>
+        <nav class="footer-nav" aria-label="Enlaces del pie de página">
+          <ul>
+            <li><a href="tu-credito.html">Tu Crédito</a></li>
+            <li><a href="registra-tu-comercio.html">Registra tu comercio</a></li>
+            <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+            <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
           </ul>
         </nav>
 
-        <div style="flex: 1; display: flex; justify-content: flex-end; min-width: 250px;">
-          <div style="display: flex; flex-direction: column; align-items: flex-start;">
-            <p style="font-family: 'Open Sans', sans-serif; font-size: 1.05rem; margin-bottom: 8px; font-weight: 400; color: #FFFFFF; margin-top: 0;">Contáctenos:</p>
-            <a href="tel:+573218016755" style="display: flex; align-items: center; gap: 12px; color: #FFFFFF; text-decoration: none; font-size: 1.3rem; font-weight: 400; margin-bottom: 12px;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px;">
-                 <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-              </svg>
+        <div class="footer-contact">
+          <div class="footer-contact-content">
+            <p class="footer-contact-label">Contáctenos:</p>
+            <a href="tel:+573218016755" class="footer-phone">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               321 801 6755
             </a>
-            <div style="display: flex; gap: 16px; padding-left: 44px;">
+            <div class="footer-social">
               <a href="https://instagram.com/finansuenos" target="_blank" rel="noopener" aria-label="Instagram de Finansueños">
-                <svg viewBox="0 0 24 24" fill="#FFFFFF" style="width: 28px; height: 28px;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.272 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.272 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
               </a>
               <a href="https://www.facebook.com/finansuenos-perfil" target="_blank" rel="noopener" aria-label="Facebook de Finansueños">
-                <svg viewBox="0 0 24 24" fill="#FFFFFF" style="width: 28px; height: 28px;"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.35c-.538 0-.65.221-.65.778v1.222h2l-.209 2h-1.791v7h-3v-7h-2v-2h2v-2.308c0-1.769.931-2.692 3.029-2.692h1.971v3z"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.35c-.538 0-.65.221-.65.778v1.222h2l-.209 2h-1.791v7h-3v-7h-2v-2h2v-2.308c0-1.769.931-2.692 3.029-2.692h1.971v3z"/></svg>
               </a>
             </div>
           </div>
         </div>
+
       </div>
     </div>
-  
-    <div style="background-color: #221C35 !important; padding: 18px 0; width: 100%;">
-      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; font-family: 'Open Sans', sans-serif; font-size: 0.95rem; color: #FFFFFF; max-width: 1200px; margin: 0 auto; padding: 0 24px;">
-        <p style="margin: 0;">Finansueños 2026. Todos los derechos reservados.</p>
-        <p style="margin: 0;">Diseño y desarrollo: Departamento de Sistemas - Arpesod Asociados SAS</p>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <p>Finansueños 2026. Todos los derechos reservados.</p>
+        <p>Diseño y desarrollo: Departamento de Sistemas - Arpesod Asociados SAS</p>
       </div>
     </div>
   </footer>
 
-  <!-- WhatsApp Float Button -->
+  <!-- Botón flotante de WhatsApp -->
   <a href="https://wa.me/573218016755" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
 
-  <!-- Notificación Toast Oculta -->
-  <div id="toast-success" class="toast-message">
-    <svg viewBox="0 0 24 24" class="toast-icon">
+  <!-- Mensaje de éxito del formulario -->
+  <div id="toast-success" class="toast-message" role="status" aria-live="polite">
+    <svg viewBox="0 0 24 24" class="toast-icon" aria-hidden="true">
       <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
       <polyline points="22 4 12 14.01 9 11.01"></polyline>
     </svg>
     <span>¡Gracias! Hemos recibido tu información correctamente.</span>
   </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      
-      // ---- HAMBURGUESA MOBILE ----
-      const hamburgerBtn = document.getElementById('hamburger-btn');
-      const mobileMenu   = document.getElementById('mobile-menu');
-
-      hamburgerBtn.addEventListener('click', () => {
-        const isOpen = mobileMenu.classList.toggle('open');
-        hamburgerBtn.classList.toggle('active');
-        hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
-        mobileMenu.setAttribute('aria-hidden', String(!isOpen));
-      });
-
-      mobileMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          mobileMenu.classList.remove('open');
-          hamburgerBtn.classList.remove('active');
-          hamburgerBtn.setAttribute('aria-expanded', 'false');
-          mobileMenu.setAttribute('aria-hidden', 'true');
-        });
-      });
-
-      // ---- ENVÍO DE FORMULARIO A GOOGLE SHEETS ----
-      const form = document.getElementById('form-contacto');
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbzoFiICgggezKq5wrKsL0Qse7vcEpee79YvFIDMbYwYb5MAlz9o0niZvQZlD_P30Fr9/exec'; 
-      const toastSuccess = document.getElementById('toast-success');
-
-      if(form) {
-        form.addEventListener('submit', e => {
-          e.preventDefault();
-          
-          const btnSubmit = form.querySelector('.btn-submit');
-          const originalText = btnSubmit.textContent;
-          btnSubmit.textContent = 'Enviando información...';
-          btnSubmit.disabled = true;
-
-          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => {
-              // Muestra el Toast elegante en lugar del alert
-              toastSuccess.classList.add('show');
-              
-              // Lo oculta automáticamente después de 5 segundos
-              setTimeout(() => {
-                toastSuccess.classList.remove('show');
-              }, 5000);
-
-              form.reset(); 
-              btnSubmit.textContent = originalText;
-              btnSubmit.disabled = false;
-            })
-            .catch(error => {
-              console.error('Error!', error.message);
-              alert('Hubo un error al enviar. Por favor intenta de nuevo.');
-              btnSubmit.textContent = originalText;
-              btnSubmit.disabled = false;
-            });
-        });
-      }
-    });
-  </script>
 
 </body>
 </html>
