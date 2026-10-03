@@ -1,0 +1,10 @@
+---
+# Publicación desde cPanel → Git Version Control → "Deploy HEAD Commit".
+# Copia SOLO los archivos del sitio a public_html (no .git, .claude, ni este archivo).
+deployment:
+  tasks:
+    - export DEPLOYPATH=$HOME/public_html/
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/cp -R css js public $DEPLOYPATH
+    - /bin/cp index.html tu-credito.html registra-tu-comercio.html sobre-nosotros.html preguntas-frecuentes.html 404.html $DEPLOYPATH
+    - /bin/cp .htaccess robots.txt sitemap.xml $DEPLOYPATH
