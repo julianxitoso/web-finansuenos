@@ -91,6 +91,7 @@ if (form) {
     fetch(scriptURL, { method: 'POST', body: data })
       .then(response => {
         if (!response.ok) throw new Error('Respuesta ' + response.status);
+        if (typeof gtag === 'function') gtag('event', 'registro_comercio_enviado');
         showSuccess();
       })
       .catch(error => {
