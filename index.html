@@ -36,7 +36,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <script>document.documentElement.classList.add('js');</script>
-  <script src="js/main.js" defer></script>
+  <script src="js/main.js?v=2" defer></script>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BTKVD7DLYL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BTKVD7DLYL');
+  </script>
 </head>
 <body>
 
@@ -89,7 +97,7 @@
           <div class="cta-content">
             <p>Conoce el estado de tu cuenta</p>
             <p>y realiza el pago de tu cuota</p>
-            <a href="https://checkout.wompi.co/l/1D0iaL" class="btn btn-secondary" target="_blank" rel="noopener">Paga tu obligación</a>
+            <a href="https://checkout.wompi.co/l/1D0iaL" class="btn btn-secondary" data-evento="clic_paga_obligacion" target="_blank" rel="noopener">Paga tu obligación</a>
           </div>
         </div>
 

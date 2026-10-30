@@ -42,6 +42,16 @@ if ('IntersectionObserver' in window) {
   fadeEls.forEach(el => el.classList.add('visible'));
 }
 
+// ---- CONTADOR DE CLICS (Google Analytics) ----
+// Todo enlace con data-evento="nombre" envía ese evento al hacer clic.
+document.querySelectorAll('[data-evento]').forEach(el => {
+  el.addEventListener('click', () => {
+    if (typeof gtag === 'function') {
+      gtag('event', el.dataset.evento, { pagina: location.pathname });
+    }
+  });
+});
+
 // ---- FORMULARIO "REGISTRA TU COMERCIO" → GOOGLE SHEETS ----
 const form = document.getElementById('form-contacto');
 
